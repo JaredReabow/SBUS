@@ -19,6 +19,11 @@ BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR P
 NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+*********************************************************************************************
+***  Modified by Jared Reabow to support Arduino UNO and other arduino variants 27-09-19  ***
+*********************************************************************************************
+
 */
 
 #include "SBUS.h"
@@ -68,6 +73,8 @@ void SBUS::begin()
         _bus->begin(_sbusBaud, SERIAL_8E2);
 	#elif defined(ARDUINO_SAMD_ZERO) // Adafruit Feather M0
 		_bus->begin(_sbusBaud, SERIAL_8E2);
+	#else 
+        _bus->begin(_sbusBaud, SERIAL_8E2);
   	#endif
 }
 
@@ -187,6 +194,8 @@ void SBUS::write(uint16_t* channels)
 		serialTimer.begin(sendByte,130);
 	#elif defined(__IMXRT1052__) || defined(__MK64FX512__) || defined(__MK66FX1M0__) || defined(__MKL26Z64__) || defined(STM32L496xx) || defined(STM32L476xx) || defined(STM32L433xx) || defined(STM32L432xx) || defined(_BOARD_MAPLE_MINI_H_) || defined(__AVR_ATmega2560__) || defined(ESP32)  // Teensy 3.5 || Teensy 3.6 || Teensy LC || STM32L4 || Maple Mini || AVR_ATmega2560 || ESP32
 		// write packet
+		_bus->write(packet,25);
+	#else
 		_bus->write(packet,25);
 	#endif
 }
