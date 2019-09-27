@@ -19,6 +19,11 @@ BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR P
 NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+*********************************************************************************************
+***  Modified by Jared Reabow to support Arduino UNO and other arduino variants 27-09-19  ***
+*********************************************************************************************
+
 */
 
 #ifndef SBUS_h
@@ -35,7 +40,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 	|| defined(__MK66FX1M0__) || defined(__MKL26Z64__) 	|| defined(__IMXRT1052__) \
 	|| defined(STM32L496xx)		|| defined(STM32L476xx) 	|| defined(STM32L433xx) \
 	|| defined(STM32L432xx)		|| defined(_BOARD_MAPLE_MINI_H_) \
-	|| defined(__AVR_ATmega2560__) || defined(ESP32)
+	|| defined(__AVR_ATmega2560__) || defined(ESP32) ||  defined(__AVR_ATmega328P__)
 #endif
 
 class SBUS{
